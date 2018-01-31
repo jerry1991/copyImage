@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片拷贝</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #canvas {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #canvas .url {
+            width: 400px;
+            padding: 2px 0 2px 5px;
+        }
+        #canvas .btn {
+            padding: 2px;
+        }
+        .image-wrapper{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="canvas">
+        <input class="url" placeholder="请输入图片地址">
+        <input class="btn" type="button" value="生成图片">
+    </form>
+    <div class="image-wrapper">
+        <canvas id="ca"></canvas>
+    </div>
+    <script type="text/javascript">
+        function $(obj) {
+            return document.querySelector(obj);
+        }
+
+        window.onload = function () {
+            $(".btn").onclick = function () {
+                var url = $(".url").value;
+                if (url) {
+                    var oCanvas = $("#ca");
+                    var oImg = document.createElement('img');
+                    var ctx = oCanvas.getContext('2d');
+                    oImg.src = url;
+
+                    oImg.onload = function () {
+                        oCanvas.width = this.width;
+                        oCanvas.height = this.height;
+                        ctx.drawImage(oImg, 0, 0, this.width, this.height, 0, 0, this.width, this.height);
+                        $(".url").value = '';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
