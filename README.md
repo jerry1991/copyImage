@@ -1,3 +1,3 @@
 # copyImage
-canvas draw image for downld
-[demo](https://jerry1991.github.io/copyImage/)
+canvas draw image for download
+ [demo](https://jerry1991.github.io/copyImage/)
